@@ -1,14 +1,21 @@
 from flask import Flask, jsonify, request, send_from_directory
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app, origins="*")
 
 
 @app.route("/", methods=["GET"])
 def home():
-    return send_from_directory("frontend/dist", "index.html")
+    return send_from_directory("./dist", "index.html")
 
 
-@app.route("/publicacao", methods=["POST"])
+@app.route("/assets/<file>", methods=["GET"])
+def react(file):
+    return send_from_directory("./dist/assets", file)
+
+
+@app.route("/publicacoes", methods=["POST"])
 def send_to_facebook():
     data = request.get_json()
     x = {
@@ -17,6 +24,7 @@ def send_to_facebook():
         "utilizadores": "utilizadores da pub",
         "timestamp": "timestamp da pub",
     }
+    print(data)
     return jsonify({"you_sent": data})
 
 

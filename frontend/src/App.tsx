@@ -14,7 +14,7 @@ function App() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3000/publicacoes", {
+      .post("http://localhost:5000/publicacoes", {
         utilizador: utilizador,
         titulo: titulo,
         texto: texto,
