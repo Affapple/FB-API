@@ -1,12 +1,11 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def home():
-    # Vai retornar o HTML e o JS
-    return jsonify({"message": "Welcome to the Flask API"})
+    return send_from_directory("frontend/dist", "index.html")
 
 
 @app.route("/publicacao", methods=["POST"])
