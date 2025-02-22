@@ -21,7 +21,7 @@ def send_to_facebook():
     x = {
         "titulo": "titulo da pub",
         "texto": "texto da pub",
-        "utilizadores": "utilizadores da pub",
+        "utilizador": "utilizadores da pub",
         "timestamp": "timestamp da pub",
     }
     print(data)
